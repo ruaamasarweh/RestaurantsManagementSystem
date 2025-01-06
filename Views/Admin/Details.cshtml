@@ -1,0 +1,54 @@
+﻿@model Gp.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-dark"><i class="bi bi-person-circle"></i> @ViewData["Title"]</h1>
+
+    <div class="card shadow border-0">
+        <div class="card-header bg-info text-white">
+            <h4 class="mb-0"><i class="bi bi-info-circle"></i> User Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <!-- Full Name -->
+                <dt class="col-sm-4 text-secondary">Full Name</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.FullName)</dd>
+
+                <!-- Username -->
+                <dt class="col-sm-4 text-secondary">Username</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.UserName)</dd>
+
+                <!-- Phone Number -->
+                <dt class="col-sm-4 text-secondary">Phone Number</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.PhoneNum)</dd>
+
+                <!-- Address -->
+                <dt class="col-sm-4 text-secondary">Address</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Address)</dd>
+
+                <!-- Email -->
+                <dt class="col-sm-4 text-secondary">Email</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Email)</dd>
+
+                <!-- Password -->
+                <dt class="col-sm-4 text-secondary">Password</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.Password)</dd>
+
+                <!-- User Type -->
+                <dt class="col-sm-4 text-secondary">User Type</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.UserType.TypeName)</dd>
+            </dl>
+        </div>
+        <div class="card-footer d-flex justify-content-between">
+            <a asp-action="Edit" asp-route-id="@Model?.UserID" class="btn btn-warning">
+                <i class="bi bi-pencil"></i> Edit
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>

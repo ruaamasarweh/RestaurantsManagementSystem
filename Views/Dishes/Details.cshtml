@@ -1,0 +1,53 @@
+﻿@model Gp.Models.Dish
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-center"><i class="bi bi-eye-fill"></i> Dish Details</h1>
+
+    <div>
+        <h4>Dish</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DishName)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DishName)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.ImageFilePath)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.ImageFilePath)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Details)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Details)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Price)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.DishCategory)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.DishCategory.Name)
+            </dd>
+        </dl>
+
+        <img id="imagePreview" src="@Url.Content("~/" + Model.ImageFilePath!.Replace("\\", "/"))" style="width: 200px; height: auto;" />
+    </div>
+
+    <div class="mt-3">
+        <a asp-action="Edit" asp-route-id="@Model?.DishID" class="btn btn-warning">Edit</a> |
+        <a asp-action="Index" class="btn btn-outline-secondary">Back to List</a>
+    </div>
+</div>

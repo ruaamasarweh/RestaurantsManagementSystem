@@ -1,0 +1,46 @@
+﻿@model Gp.Models.Restaurant
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-primary"><i class="bi bi-info-circle"></i> Restaurant Details</h1>
+
+    <div class="card shadow border-0">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0"><i class="bi bi-shop"></i> Details</h4>
+        </div>
+        <div class="card-body">
+            <dl class="row">
+                <!-- Restaurant Name -->
+                <dt class="col-sm-3 fw-bold">Restaurant Name</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.RestaurantName)</dd>
+
+                <!-- Image File Path -->
+                <dt class="col-sm-3 fw-bold">Image File Path</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.ImageFilePath)</dd>
+
+                <!-- User -->
+                <dt class="col-sm-3 fw-bold">Owner</dt>
+                <dd class="col-sm-9">@Html.DisplayFor(model => model.User!.FullName)</dd>
+
+                <!-- Image Preview -->
+                <dt class="col-sm-3 fw-bold">Image Preview</dt>
+                <dd class="col-sm-9">
+                    <img id="imagePreview" src="@Url.Content("~/" + Model.ImageFilePath!.Replace("\\", "/"))"
+                         style="width: 300px; height: auto; border: 1px solid #ddd; border-radius: 5px; padding: 5px;"
+                         alt="Restaurant Image" />
+                </dd>
+            </dl>
+        </div>
+        <div class="card-footer text-end">
+            <a asp-action="Edit" asp-route-id="@Model?.RestaurantID" class="btn btn-warning me-2">
+                <i class="bi bi-pencil"></i> Edit
+            </a>
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Back to List
+            </a>
+        </div>
+    </div>
+</div>

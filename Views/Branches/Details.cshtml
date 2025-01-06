@@ -1,0 +1,85 @@
+﻿@model Gp.Models.Branch
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h1 class="text-center text-primary">Branch Details</h1>
+            <hr />
+            <div class="row">
+                <div class="col-md-8">
+                    <dl class="row">
+                        <dt class="col-sm-4 text-end fw-bold">
+                            @Html.DisplayNameFor(model => model.LocationDescription)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.LocationDescription)
+                        </dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">
+                            @Html.DisplayNameFor(model => model.phoneNumber)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.phoneNumber)
+                        </dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">
+                            @Html.DisplayNameFor(model => model.OpenTime)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.OpenTime)
+                        </dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">
+                            @Html.DisplayNameFor(model => model.CloseTime)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.CloseTime)
+                        </dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">
+                            @Html.DisplayNameFor(model => model.HasIndoorSeating)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.HasIndoorSeating)
+                        </dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">
+                            @Html.DisplayNameFor(model => model.HasOutdoorSeating)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.HasOutdoorSeating)
+                        </dd>
+
+                        <dt class="col-sm-4 text-end fw-bold">
+                            @Html.DisplayNameFor(model => model.NumOfTables)
+                        </dt>
+                        <dd class="col-sm-8">
+                            @Html.DisplayFor(model => model.NumOfTables)
+                        </dd>
+                    </dl>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <h5 class="fw-bold">Branch Image</h5>
+                    <img id="imagePreview" src="@Url.Content("~/" + Model.ImageFilePath!.Replace("\\", "/"))"
+                         class="img-fluid rounded shadow-sm"
+                         alt="Branch Image"
+                         style="max-width: 100%; height: auto;" />
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <a asp-action="Edit" asp-route-id="@Model?.BranchID" class="btn btn-warning me-3">
+                    <i class="bi bi-pencil-square"></i> Edit
+                </a>
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left"></i> Back to List
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Gp.Models.Dish>
+
+@{
+    ViewData["Title"] = "Dishes";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-center"><i class="bi bi-list-ul"></i> Dishes</h1>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a asp-action="Create" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-circle"></i> Create New Dish
+        </a>
+    </div>
+
+    <table class="table table-striped table-hover shadow-sm">
+        <thead class="bg-secondary  text-white">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.DishName)</th>
+                <th>Image</th>
+                <th>@Html.DisplayNameFor(model => model.Details)</th>
+                <th>@Html.DisplayNameFor(model => model.Price)</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.DishName)</td>
+                    <td>
+                        <img src="@Url.Content("~/" + item.ImageFilePath)" alt="Dish Image" class="img-thumbnail" style="width: 150px; height: 100px;" />
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => item.Details)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Price)</td>
+                    <td>
+                        <div class="btn-group" role="group">
+                            <a asp-action="Edit" asp-route-id="@item.DishID" class="btn btn-warning btn-sm shadow-sm">
+                                <i class="bi bi-pencil-fill"></i> Edit
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.DishID" class="btn btn-info btn-sm shadow-sm">
+                                <i class="bi bi-eye-fill"></i> Details
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.DishID" class="btn btn-danger btn-sm shadow-sm">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Gp.Models.Branch>
+
+@{
+    ViewData["Title"] = "Branches";
+}
+
+<div class="container mt-4">
+    <h1 class="mb-4 text-center"><i class="bi bi-geo-alt-fill"></i> Branches</h1>
+
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <a asp-action="Create" class="btn btn-primary shadow-sm">
+            <i class="bi bi-plus-circle"></i> Create New Branch
+        </a>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card shadow-sm h-100">
+                    <img src="@Url.Content("~/" + item.ImageFilePath)" alt="Branch Image" class="card-img-top" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <i class="bi bi-geo-fill"></i> @item.LocationDescription
+                        </h5>
+                        <p class="card-text">
+                            <strong>Phone:</strong> @item.phoneNumber<br />
+                            <strong>Hours:</strong> @item.OpenTime - @item.CloseTime<br />
+                            <strong>Indoor Seating:</strong>
+                            <span class="badge @(item.HasIndoorSeating ? "bg-success" : "bg-danger")">
+                                @(item.HasIndoorSeating ? "Yes" : "No")
+                            </span><br />
+                            <strong>Outdoor Seating:</strong>
+                            <span class="badge @(item.HasOutdoorSeating ? "bg-success" : "bg-danger")">
+                                @(item.HasOutdoorSeating ? "Yes" : "No")
+                            </span><br />
+                            <strong>Tables:</strong> @item.NumOfTables
+                        </p>
+                    </div>
+                    <div class="card-footer d-flex justify-content-between">
+                        <a asp-action="SelectEmployee" asp-controller="Employees" asp-route-branchID="@item.BranchID" asp-route-selectedAction="Index" asp-route-selectedController="Employees" class="btn btn-outline-info btn-sm">
+                            <i class="bi bi-people-fill"></i> Employees
+                        </a>
+                        <div class="btn-group">
+                            <a asp-action="Edit" asp-route-id="@item.BranchID" class="btn btn-warning btn-sm">
+                                <i class="bi bi-pencil-fill"></i> Edit
+                            </a>
+                            <a asp-action="Details" asp-route-id="@item.BranchID" class="btn btn-info btn-sm">
+                                <i class="bi bi-eye-fill"></i> Details
+                            </a>
+                            <a asp-action="Delete" asp-route-id="@item.BranchID" class="btn btn-danger btn-sm">
+                                <i class="bi bi-trash-fill"></i> Delete
+                            </a>
+                            <a asp-action="GenerateQrCode" asp-controller="QrCode" asp-route-branchID="@item.BranchID" class="btn btn-secondary btn-sm">
+                                <i class="bi bi-qr-code"></i> QR Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

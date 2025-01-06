@@ -1,0 +1,70 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Gp.Models.Login
+
+@{
+    ViewData["Title"] = "Login";
+    ViewData["HideNavBar"] = true;
+}
+
+
+<style>
+    body {
+        background-image: url('/images/restaurant-bg.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height: 100vh;
+    }
+
+    .login-card {
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .login-header {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+
+    .form-control {
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+ 
+
+       
+</style>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="login-card">
+        <h2 class="text-center login-header text-primary">Welcome!</h2>
+        <p class="text-center text-secondary">Login</p>
+        <form method="post">
+            <div class="form-group mb-3">
+                <label asp-for="Email" class="form-label">Email Address</label>
+                <input asp-for="Email" class="form-control" placeholder="Enter your email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="Password" class="form-label">Password</label>
+                <input asp-for="Password" type="password" class="form-control" placeholder="Enter your password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="d-grid">
+                <input type="submit" value="Login" class="btn btn-primary btn-block shadow-sm" />
+            </div>
+        </form>
+        <div class="text-center mt-3">
+            <p class="text-danger">@TempData["msg"]</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@{
+    ViewData["Title"] = "QR Code for Branch";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <h2 class="text-center text-primary mb-4">QR Code for this Branch</h2>
+            <div class="mb-4">
+                <p><strong>Restaurant Name:</strong> <span class="text-secondary">@ViewBag.RestaurantName</span></p>
+                <p><strong>Location Description:</strong> <span class="text-secondary">@ViewBag.LocationDescription</span></p>
+            </div>
+
+            <div class="text-center mb-4">
+                <h4 class="text-success">QR Code for Order:</h4>
+                <img src="@ViewBag.QrCodeImagePath" alt="QR Code" class="img-thumbnail shadow-sm" style="max-width: 250px;" />
+            </div>
+
+            <div class="alert alert-info text-center">
+                <strong>Note:</strong> This QR code directs to the menu page for this branch.
+            </div>
+
+            <div class="d-flex justify-content-center mt-4">
+                <a href="@ViewBag.QrCodeImagePath" download="@($"QRCode_Branch_{ViewBag.BranchID}.png")" class="btn btn-primary">
+                    <i class="bi bi-download"></i> Save QR Code
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

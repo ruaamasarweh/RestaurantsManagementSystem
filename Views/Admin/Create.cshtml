@@ -1,0 +1,85 @@
+﻿@model Gp.Models.User
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="mt-4 mb-3">@ViewData["Title"]</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card shadow p-4 border-0">
+            <h4 class="mb-4 text-primary"><i class="bi bi-person-plus"></i> Add New Restaurant Owner</h4>
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+            
+                <div class="form-group mb-3">
+                    <label asp-for="FullName" class="form-label fw-bold">Full Name</label>
+                    <input asp-for="FullName" class="form-control border-primary" placeholder="Enter full name" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+             
+                <div class="form-group mb-3">
+                    <label asp-for="UserName" class="form-label fw-bold">Username</label>
+                    <input asp-for="UserName" class="form-control border-primary" placeholder="Choose a username" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+
+             
+                <div class="form-group mb-3">
+                    <label asp-for="PhoneNum" class="form-label fw-bold">Phone Number</label>
+                    <input asp-for="PhoneNum" class="form-control border-primary" placeholder="Enter phone number" />
+                    <span asp-validation-for="PhoneNum" class="text-danger"></span>
+                </div>
+
+             
+                <div class="form-group mb-3">
+                    <label asp-for="Address" class="form-label fw-bold">Address</label>
+                    <input asp-for="Address" class="form-control border-primary" placeholder="Enter address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+          
+                <div class="form-group mb-3">
+                    <label asp-for="Email" class="form-label fw-bold">Email</label>
+                    <input asp-for="Email" class="form-control border-primary" placeholder="Enter email address" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+              
+                <div class="form-group mb-3">
+                    <label asp-for="Password" class="form-label fw-bold">Password</label>
+                    <input asp-for="Password" class="form-control border-primary" type="password" placeholder="Choose a password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+               
+                <div class="form-group mb-4">
+                    <label class="form-label fw-bold">User Type</label>
+                    <select asp-for="UserTypeID" class="form-control border-primary" asp-items="ViewBag.UserTypeID">
+                        <option value="" disabled selected>Select a user type</option>
+                    </select>
+                    <span asp-validation-for="UserTypeID" class="text-danger"></span>
+                </div>
+
+            
+                <div class="d-flex justify-content-between">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="bi bi-arrow-left"></i> Back to List
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save"></i> Create
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}  

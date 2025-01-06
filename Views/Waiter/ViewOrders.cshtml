@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Gp.Models.Order>
+
+
+  
+    <div class="d-flex justify-content-end">
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="bi bi-arrow-left"></i> Back
+        </a>
+    </div>
+<div class="container mt-4">
+    <h1 class="mb-4">Order Details</h1>
+
+    <table class="table table-striped table-bordered table-hover shadow-sm">
+        <thead class="bg-secondary  text-white">
+            <tr>
+                <th>Dish Name</th>
+                <th>Image</th>
+                <th>Details</th>
+                <th>Price</th>
+                <th>Quantity</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var order in Model)
+            {
+                <tr>
+                    <td>@order.ReservationDish.Dish.DishName</td>
+                    <td>
+                        <img src="@Url.Content("~/" + order.ReservationDish.Dish.ImageFilePath)"
+                             alt="Dish Image"
+                             class="img-fluid rounded" style="max-width: 150px; height: auto;" />
+                    </td>
+                    <td>@order.ReservationDish.Dish.Details</td>
+                    <td>@order.ReservationDish.Dish.Price.ToString("C", new System.Globalization.CultureInfo("en-JO"))</td>
+                    <td>@order.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+ 
+    <div class="alert alert-info text-right mt-3">
+        <strong>Total Price: @ViewBag.TotalPrice.ToString("C", new System.Globalization.CultureInfo("en-JO"))</strong>
+    </div>
+</div>

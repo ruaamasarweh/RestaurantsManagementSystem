@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Gp.Models.Restaurant>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center text-secondary my-4">Your Restaurants</h1>
+
+<p class="text-end">
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Create New
+    </a>
+</p>
+
+<table class="table table-hover table-bordered shadow-sm">
+    <thead class="bg-secondary  text-white">
+        <tr>
+            <th class="text-center">Restaurant Name</th>
+            <th class="text-center">Image</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="align-middle text-center">@Html.DisplayFor(modelItem => item.RestaurantName)</td>
+                <td class="text-center">
+                    <img src="@Url.Content("~/" + item.ImageFilePath)" alt="Restaurant Image" class="img-thumbnail" style="width: 150px; height: 100px; object-fit: cover;" />
+                </td>
+                <td class="align-middle text-center">
+                    <a asp-action="Edit" asp-route-id="@item.RestaurantID" class="btn btn-warning btn-sm mx-1">
+                        <i class="bi bi-pencil-square"></i> Edit
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.RestaurantID" class="btn btn-info btn-sm mx-1">
+                        <i class="bi bi-info-circle"></i> Details
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.RestaurantID" class="btn btn-danger btn-sm mx-1">
+                        <i class="bi bi-trash"></i> Delete
+                    </a>
+                    <a asp-action="SelectRestaurant" asp-controller="Restaurants"
+                       asp-route-restaurantID="@item.RestaurantID"
+                       asp-route-selectedAction="Index"
+                       asp-route-selectedController="Branches"
+                       class="btn btn-outline-primary btn-sm mx-1">
+                        Branches
+                    </a>
+                    <a asp-action="SelectRestaurant" asp-controller="Restaurants"
+                       asp-route-restaurantID="@item.RestaurantID"
+                       asp-route-selectedAction="Index"
+                       asp-route-selectedController="DishCategories"
+                       class="btn btn-outline-success btn-sm mx-1">
+                        Menu
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
