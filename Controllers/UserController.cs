@@ -65,7 +65,7 @@ namespace Gp.Controllers
                     }
                     else if (employeeType == "Waiter")
                     {
-                        HttpContext.Session.SetInt32("ReceptionistID", employee.EmployeeID);
+                        HttpContext.Session.SetInt32("WaiterID", employee.EmployeeID);
                         HttpContext.Session.SetInt32("BranchID", employee.BranchID);
 
                         return RedirectToAction("Index", "Waiter");
